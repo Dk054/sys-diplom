@@ -1,0 +1,14 @@
+#cloud-config
+users:
+- name: diplom
+  groups: sudo
+  shell: /bin/bash
+  sudo: ['ALL=(ALL) NOPASSWD:ALL']
+  ssh-authorized-keys:
+    ssh-rsa ***(не покажу)***
+disable_root: true
+timezone: Asia/Novosibirsk
+repo_update: true
+repo_upgrade: true
+apt:
+  preserve_sources_list: true
