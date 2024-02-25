@@ -93,13 +93,14 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 1. По инструкции с [Yandex Cloud](https://cloud.yandex.com/) установил терраформ на локальную ВМ, создал новый сервисный аккаунт и настроил доступ к    облаку с локальной машины:
   <details>
-   
-  ![image](image/init.png)
+     
+![image](image/init.png)
 </details>
      
------
-
-2. Написал конфиг для развертывания инфраструктуры с помощью [terraform](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Terraform)
+2. Написал конфиг для инфраструктуры с помощью [terraform](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Terraform) запустил его
+  ![image]/(terraform_apply.png)
+4. После развертывания инфраструктуры создаю вручную bastionhost и добавляю его в security groups, для установки  приложений с помощью Ansible
+5. 
    
 
 ## Критерии сдачи
