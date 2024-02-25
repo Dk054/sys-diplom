@@ -121,6 +121,23 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 </details>
 
+### Мониторинг
+Использовал ansible galaxy для заббикс [сервера](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/roles/zabbix-server) и [агента](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/roles/zabbix-agent), для установки агента на ВМ использовал fqdn, так как статику я не настраивал, для того что бы настроить дашборды, необходимо доваить хосты и прикрутить к ним шаблоны (использовал стандартные линукс+агент)
+
+Скриншоты:
+<details>
+
+</details> 
+
+
+### Логи
+Сначала установил [Elasticsearch](https://github.com/Dk054/sys-diplom/blob/diplom-zabbix/Ansible/playbook-elastic.yml),потом [filebeat](https://github.com/Dk054/sys-diplom/blob/diplom-zabbix/Ansible/playbook-filebeat.yml) на ВМ, далее [Kibana](https://github.com/Dk054/sys-diplom/blob/diplom-zabbix/Ansible/playbook-kibana.yml), [конфиги](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/configs) для них.
+
+скриншоты:
+<details>
+
+</details> 
+
 
 </details> 
 
