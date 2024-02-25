@@ -19,11 +19,3 @@
       owner: diplom
       group: sudo
       mode: '0644'
-
-#  - name: Change main page and style
-#    ansible.builtin.copy:
-#      src: ./site/style.css
-#      dest: /var/www/html/style.css
-#      owner: chichnikita
-#      group: sudo
-#      mode: '0644'
