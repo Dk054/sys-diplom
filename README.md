@@ -105,13 +105,13 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
    
 ![image](image/terraform_apply.png)
 </details>
-4. После развертывания инфраструктуры создаю вручную bastionhost и добавляю его в security groups, для установки  приложений с помощью Ansible 
-5. Ставлю Ansible на bastionhost
+3. После развертывания инфраструктуры создаю вручную bastionhost и добавляю его в security groups, для установки  приложений с помощью Ansible 
+4. Ставлю Ansible на bastionhost
 
 ### Сайт
 
 Создал две ВМ в разных зонах, ставлю на них сервера nginx [playbook-nginx.yml](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Terraform), так же немного изменил конфиг html, в плейбуке описаны все действия, а именно установка, * устанавка начальной страницы сайта по шаблону html. 
-Запускаю плейбук, проверяю что сайт доступен, заоодно првоеряю работу балансировщика
+Запускаю плейбук, проверяю что сайт доступен, заодно првоеряю работу балансировщика
 <details>
    
 ![установка](https://github.com/Dk054/sys-diplom/blob/diplom-zabbix/image/nginx%20установка.png)
@@ -122,7 +122,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 </details>
 
 ### Мониторинг
-Использовал ansible galaxy для заббикс [сервера](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/roles/zabbix-server) и [агента](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/roles/zabbix-agent), для установки агента на ВМ использовал fqdn, так как статику я не настраивал, для того что бы настроить дашборды, необходимо доваить хосты и прикрутить к ним шаблоны (использовал стандартные линукс+агент)
+Использовал ansible galaxy для заббикс [сервера](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/roles/zabbix-server) и [агента](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/roles/zabbix-agent), для установки агента на ВМ использовал fqdn, так как статику я не настраивал, для того что бы настроить дашборды, необходимо добавить хосты и прикрутить к ним шаблоны (использовал стандартные линукс+агент)
 
 Скриншоты:
 <details>
@@ -138,6 +138,24 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 </details> 
 
+### Сеть
+Группы безопасности:
+![image](https://github.com/Dk054/sys-diplom/assets/139000762/3bb178bd-00c7-42fe-9752-0f3d95e77d35)
+Шлюз:
+![image](https://github.com/Dk054/sys-diplom/assets/139000762/b3a8a6df-75d7-4315-bc04-41ec6dd889f9)
+Балансировщик
+![image](https://github.com/Dk054/sys-diplom/assets/139000762/2912ddae-76b8-4f4c-8d96-a1fdbcbf00a7)
+![image](https://github.com/Dk054/sys-diplom/assets/139000762/e00f31f3-d4a2-494a-8599-b4408528221e)
+![image](https://github.com/Dk054/sys-diplom/assets/139000762/627c9005-48f2-43c6-ae97-f250cc6f4d30)
+
+
+
+Настройте [Security Groups](https://cloud.yandex.com/docs/vpc/concepts/security-groups) соответствующих сервисов на входящий трафик только к нужным портам.
+
+Настройте ВМ с публичным адресом, в которой будет открыт только один порт — ssh.  Эта вм будет реализовывать концепцию  [bastion host]( https://cloud.yandex.ru/docs/tutorials/routing/bastion) . Синоним "bastion host" - "Jump host". Подключение  ansible к серверам web и Elasticsearch через данный bastion host можно сделать с помощью  [ProxyCommand](https://docs.ansible.com/ansible/latest/network/user_guide/network_debug_troubleshooting.html#network-delegate-to-vs-proxycommand) . Допускается установка и запуск ansible непосредственно на bastion host.(Этот вариант легче в настройке)
+
+### Резервное копирование
+Создайте snapshot дисков всех ВМ. Ограничьте время жизни snaphot в неделю. Сами snaphot настройте на ежедневное копирование.
 
 </details> 
 
