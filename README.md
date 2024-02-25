@@ -142,15 +142,18 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 Группы безопасности:
 <details>
+   
 ![image](https://github.com/Dk054/sys-diplom/assets/139000762/3bb178bd-00c7-42fe-9752-0f3d95e77d35)
+
 </details> 
 Шлюз:
+
 ![image](https://github.com/Dk054/sys-diplom/assets/139000762/b3a8a6df-75d7-4315-bc04-41ec6dd889f9)
 Балансировщик
 ![image](https://github.com/Dk054/sys-diplom/assets/139000762/2912ddae-76b8-4f4c-8d96-a1fdbcbf00a7)
 ![image](https://github.com/Dk054/sys-diplom/assets/139000762/e00f31f3-d4a2-494a-8599-b4408528221e)
 ![image](https://github.com/Dk054/sys-diplom/assets/139000762/627c9005-48f2-43c6-ae97-f250cc6f4d30)
-</details> 
+
 
 
 Настройте [Security Groups](https://cloud.yandex.com/docs/vpc/concepts/security-groups) соответствующих сервисов на входящий трафик только к нужным портам.
