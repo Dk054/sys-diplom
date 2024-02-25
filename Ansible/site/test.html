@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Анимированная страница</title>
+	<style>
+		@keyframes backgroundAnimation {
+			0% { background-color: white; }
+			50% { background-color: lightblue; }
+			100% { background-color: white; }
+		}
+
+		body {
+			animation: backgroundAnimation 5s linear infinite;
+		}
+
+		#logo {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 100px;
+			height: 100px;
+			url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCGilnkF-DVAoBvG7EgDZhzQ&psig=AOvVaw2BTY7564ev1sp-wdvL5xaq&ust=1707633657855000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIiMv56VoIQDFQAAAAAdAAAAABAE") initial;
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+
+		#text {
+			text-align: center;
+			margin-top: 200px;
+			font-size: 48px;
+			color: cream;
+		}
+	</style>
+</head>
+<body>
+	<div id="logo"></div>
+	<div id="text">
+		Kalashnikov Dmitry, SYS-22
+	</div>
+</body>
+</html>

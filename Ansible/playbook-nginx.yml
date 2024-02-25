@@ -1,0 +1,29 @@
+- name: Test connection
+  hosts: web_servers
+  become: yes
+
+  tasks:
+
+  - name: Update apt
+    apt:
+      update_cache: yes
+
+  - name: Install nginx
+    apt: name=nginx state=latest
+
+  - name: Change main page
+    ansible.builtin.copy:
+      dest: /var/www/html/index.nginx-debian.html
+      src: /home/dk1/ansible/site/test.html
+#      remote_src: yes
+      owner: diplom
+      group: sudo
+      mode: '0644'
+
+#  - name: Change main page and style
+#    ansible.builtin.copy:
+#      src: ./site/style.css
+#      dest: /var/www/html/style.css
+#      owner: chichnikita
+#      group: sudo
+#      mode: '0644'
