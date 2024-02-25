@@ -97,6 +97,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 ![image](image/init.png)
 <details>
 
+
 3. Написал конфиг для развертывания инфраструктуры с помощью [terraform](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Terraform)
    
 
