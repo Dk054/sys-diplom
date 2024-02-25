@@ -7,8 +7,9 @@ zabbix.ru-central1.internal
 elast.ru-central1.internal
 [kibana]
 kibana.ru-central1.internal
+[gw]
+gateway.ru-central1.internal
 [all:vars]
 ansible_ssh_user=diplom
 ansible_ssh_private_key_file=/home/dk1/.ssh/private.pem
-[gw]
-gateway.ru-central1.internal
+
