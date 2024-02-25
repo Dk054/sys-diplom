@@ -112,9 +112,13 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 Создал две ВМ в разных зонах, ставлю на них сервера nginx [playbook-nginx.yml](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Terraform), так же немного изменил конфиг html, в плейбуке описаны все действия, а именно установка, * устанавка начальной страницы сайта по шаблону html. 
 Запускаю плейбук, проверяю что сайт доступен, заоодно првоеряю работу балансировщика
-
-![image](image/nginx установка .png)
-
+<details>
+   
+![image](image/nginx установка.png)
+!image/сайт.png
+image/адрес балансировщика.png
+image/логи балансировщика.png
+</details>
 
 
 </details> 
