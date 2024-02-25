@@ -114,10 +114,11 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 Запускаю плейбук, проверяю что сайт доступен, заоодно првоеряю работу балансировщика
 <details>
    
-![image](image/nginx установка.png)
-!image/сайт.png
-image/адрес балансировщика.png
-image/логи балансировщика.png
+![установка](https://github.com/Dk054/sys-diplom/blob/diplom-zabbix/image/nginx%20установка.png)
+![Сайт](https://github.com/Dk054/sys-diplom/blob/diplom-zabbix/image/сайт.png)
+![Баланировщик](https://github.com/Dk054/sys-diplom/blob/diplom-zabbix/image/адрес%20балансировщика.png)
+![Логи_балансировщика](https://github.com/Dk054/sys-diplom/blob/diplom-zabbix/image/логи%20балансировщика.png)
+
 </details>
 
 
