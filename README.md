@@ -1,4 +1,4 @@
-![image](https://github.com/Dk054/sys-diplom/assets/139000762/cca124ba-3753-4541-9904-573de6e5f188)#  Дипломная работа по профессии «Системный администратор»
+#  Дипломная работа по профессии «Системный администратор»
 
 <details> 
    
@@ -92,7 +92,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 ## Решение
 </details>
 1. По инструкции с [Yandex Cloud](https://cloud.yandex.com/) установил терраформ на локальную ВМ, создал новый сервисный аккаунт и настроил доступ к    облаку с локальной машины:
-![image](https://github.com/Dk054/sys-diplom/assets/139000762/9bde5d52-ee3c-4518-811d-c0c96123b56b)
+![image](https://github.com/Dk054/sys-diplom/assets/139000762/cca124ba-3753-4541-9904-573de6e5f188)
 
 2. Написал конфиг для развертывания инфраструктуры с помощью [terraform](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Terraform)
    
