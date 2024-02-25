@@ -92,7 +92,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 ## Решение
 </details>
 1. По инструкции с [Yandex Cloud](https://cloud.yandex.com/) установил терраформ на локальную ВМ, создал новый сервисный аккаунт и настроил доступ к    облаку с локальной машины:
-![image](https://github.com/Dk054/sys-diplom/assets/139000762/8e36ecc0-9726-47b1-8e43-a9cf691b7244)
+![image](image/init.png)
 
 
 2. Написал конфиг для развертывания инфраструктуры с помощью [terraform](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Terraform)
