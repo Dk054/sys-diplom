@@ -15,6 +15,8 @@
     ansible.builtin.copy:
       dest: /var/www/html/index.nginx-debian.html
       src: /home/dk1/ansible/site/test.html
+      dest: /var/www/html/logo.png
+      src: /home/dk1/ansible/site/logo.png
 #      remote_src: yes
       owner: diplom
       group: sudo
