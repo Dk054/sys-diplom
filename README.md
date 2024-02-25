@@ -139,9 +139,11 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 </details> 
 
 ### Сеть
-<details>
+
 Группы безопасности:
+<details>
 ![image](https://github.com/Dk054/sys-diplom/assets/139000762/3bb178bd-00c7-42fe-9752-0f3d95e77d35)
+</details> 
 Шлюз:
 ![image](https://github.com/Dk054/sys-diplom/assets/139000762/b3a8a6df-75d7-4315-bc04-41ec6dd889f9)
 Балансировщик
