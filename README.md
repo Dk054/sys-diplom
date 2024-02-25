@@ -132,7 +132,6 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 </details> 
 
-
 ### Логи
 Сначала установил [Elasticsearch](https://github.com/Dk054/sys-diplom/blob/diplom-zabbix/Ansible/playbook-elastic.yml),потом [filebeat](https://github.com/Dk054/sys-diplom/blob/diplom-zabbix/Ansible/playbook-filebeat.yml) на ВМ, далее [Kibana](https://github.com/Dk054/sys-diplom/blob/diplom-zabbix/Ansible/playbook-kibana.yml), [конфиги](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/configs) для них.
 
