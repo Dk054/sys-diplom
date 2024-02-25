@@ -110,21 +110,10 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ### Сайт
 
-Создал две ВМ в разных зонах, ставлю на них сервера nginx [playbook-nginx.yml](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Terraform), так же немного изменил конфиг html, в плейбуке описаны все действия, а именно установка, * устанавка начальной страницы сайта по шаблону html
+Создал две ВМ в разных зонах, ставлю на них сервера nginx [playbook-nginx.yml](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Terraform), так же немного изменил конфиг html, в плейбуке описаны все действия, а именно установка, * устанавка начальной страницы сайта по шаблону html. 
+Запускаю плейбук, проверяю что сайт доступен, заоодно првоеряю работу балансировщика
 
-Используйте набор статичных файлов для сайта. Можно переиспользовать сайт из домашнего задания.
-
-Создайте [Target Group](https://cloud.yandex.com/docs/application-load-balancer/concepts/target-group), включите в неё две созданных ВМ.
-
-Создайте [Backend Group](https://cloud.yandex.com/docs/application-load-balancer/concepts/backend-group), настройте backends на target group, ранее созданную. Настройте healthcheck на корень (/) и порт 80, протокол HTTP.
-
-Создайте [HTTP router](https://cloud.yandex.com/docs/application-load-balancer/concepts/http-router). Путь укажите — /, backend group — созданную ранее.
-
-Создайте [Application load balancer](https://cloud.yandex.com/en/docs/application-load-balancer/) для распределения трафика на веб-сервера, созданные ранее. Укажите HTTP router, созданный ранее, задайте listener тип auto, порт 80.
-
-Протестируйте сайт
-`curl -v <публичный IP балансера>:80`
-
+![image](image/nginx установка .png)
 
 
 
