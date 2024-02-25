@@ -128,7 +128,8 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 <details>
    
 ![image](https://github.com/Dk054/sys-diplom/assets/139000762/9b4fa89f-b7a5-4438-94c9-5a522040489a)
-![image](https://github.com/Dk054/sys-diplom/assets/139000762/6a68961f-da9d-42f2-bc72-5d2d0c8665bc)
+![image](https://github.com/Dk054/sys-diplom/assets/139000762/c6dbdcb5-f252-4b93-a545-3277f7e7d19b)
+
 </details> 
 
 ### Логи
