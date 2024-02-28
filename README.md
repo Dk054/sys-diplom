@@ -129,8 +129,10 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ### Мониторинг
 Использовал ansible galaxy для заббикс [сервера](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/roles/zabbix-server) и [агента](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/roles/zabbix-agent), для установки агента на ВМ использовал fqdn, для того что бы настроить дашборды, необходимо добавить хосты и прикрутить к ним шаблоны (использовал стандартные линукс+агент)
+Установка:
+![Vault](https://github.com/Dk054/sys-diplom/blob/a39299391225329496690072267f5bf2f0989b16/image/ansible-playbook%20-i%20hosts%20zabbix-server.yml%20--ask-vault-pass.png)
 
-Скриншоты:
+Дашборд:
 <details>
    
 ![image](https://github.com/Dk054/sys-diplom/assets/139000762/b372c5b3-32b0-4628-97ed-47d7ddb0cc63)
