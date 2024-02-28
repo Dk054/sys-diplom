@@ -110,9 +110,10 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 </details>
 3. После развертывания инфраструктуры создаю вручную bastionhost и добавляю его в security groups, для установки  приложений с помощью Ansible 
 4. Ставлю Ansible на bastionhost и проверяю:
-
+<details>
+   
 [![Проверка](https://github.com/Dk054/sys-diplom/blob/38c73d0e665d476e4d08b32332a80bd164626910/image/ansible%20-i%20hosts%20all%20-m%20ping.png)
-
+</details>
 
 ### Сайт
 
@@ -130,8 +131,10 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 ### Мониторинг
 Использовал ansible galaxy для заббикс [сервера](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/roles/zabbix-server) и [агента](https://github.com/Dk054/sys-diplom/tree/diplom-zabbix/Ansible/roles/zabbix-agent), для установки агента на ВМ использовал fqdn, для того что бы настроить дашборды, необходимо добавить хосты и прикрутить к ним шаблоны (использовал стандартные линукс+агент)
 Установка:
-![Vault](https://github.com/Dk054/sys-diplom/blob/a39299391225329496690072267f5bf2f0989b16/image/ansible-playbook%20-i%20hosts%20zabbix-server.yml%20--ask-vault-pass.png)
+<details>
 
+![Vault](https://github.com/Dk054/sys-diplom/blob/a39299391225329496690072267f5bf2f0989b16/image/ansible-playbook%20-i%20hosts%20zabbix-server.yml%20--ask-vault-pass.png)
+</details>
 Дашборд:
 <details>
    
