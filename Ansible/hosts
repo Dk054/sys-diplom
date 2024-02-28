@@ -11,10 +11,10 @@ web-server-nginx-2.ru-central1.internal
 [zabbix_server]
 zabbix.ru-central1.internal
 
-[elastic_server]
+[elastic]
 elast.ru-central1.internal
 
-[kibana_server]
+[kibana]
 kibana.ru-central1.internal
 
 [filebeat_node]
