@@ -62,7 +62,7 @@
 - name: Create MySQL user and  password
   community.mysql.mysql_user:
     name: zabbix
-    password: "netology"
+    password: "{{ password_db}}"
     priv: "*.*:ALL,GRANT"
     state: present
 
@@ -94,7 +94,7 @@
   ansible.builtin.lineinfile:
     path: /etc/zabbix/zabbix_server.conf
     insertafter: "DBPassword="
-    line: DBPassword=netology
+    line: DBPassword={{ password_db}}
 
 - name: Set PHP port and server address
   replace:
