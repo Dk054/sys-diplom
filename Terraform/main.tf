@@ -9,8 +9,8 @@ terraform {
 #Provider
 provider "yandex" {
   service_account_key_file     = "key.json"
-  cloud_id  = "b1gp067drcm7euosqt05"
-  folder_id = "b1gul7nn0jort2v05icc"
+  cloud_id                 = var.cloud_id
+  folder_id                = var.folder_id
 }
 
 #Network
