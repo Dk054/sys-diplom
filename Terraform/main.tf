@@ -6,14 +6,15 @@ terraform {
   }
 }
 
-#Provider
+#Провайдер
 provider "yandex" {
-  service_account_key_file     = "key.json"
+  service_account_key_file = "key.json"
   cloud_id                 = var.cloud_id
   folder_id                = var.folder_id
 }
 
-#Network
+
+#Сеть
 resource "yandex_vpc_network" "network1" {
   name = "network1"
 }
@@ -38,17 +39,15 @@ resource "yandex_vpc_subnet" "subnet-gw" {
 }
 
 
-
-#WebServers
-#webserver1
-resource "yandex_compute_instance" "webserver1" {
-  name        = "webserver1"
+#web-server-nginx-1
+resource "yandex_compute_instance" "web-server-nginx-1" {
+  name     = "web-server-nginx-1"
+  zone     = "ru-central1-a"
+  hostname = "web-server-nginx-1"
   platform_id = "standard-v3"
   scheduling_policy {
     preemptible = true
   }
-  zone     = "ru-central1-a"
-  hostname = "webserver1"
   resources {
     cores         = 2
     memory        = 2
@@ -61,23 +60,24 @@ resource "yandex_compute_instance" "webserver1" {
     }
   }
   network_interface {
-    subnet_id = yandex_vpc_subnet.subnet1.id
-    nat       = true
+    subnet_id  = yandex_vpc_subnet.subnet1.id
+    nat        = false
+    ip_address = "192.168.1.24"
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
   }
 }
 
-#webserver2
-resource "yandex_compute_instance" "webserver2" {
-  name        = "webserver2"
+#web-server-nginx-2
+resource "yandex_compute_instance" "web-server-nginx-2" {
+  name     = "web-server-nginx-2"
+  zone     = "ru-central1-b"
+  hostname = "web-server-nginx-2"
   platform_id = "standard-v3"
   scheduling_policy {
     preemptible = true
   }
-  zone     = "ru-central1-b"
-  hostname = "webserver2"
   resources {
     cores         = 2
     memory        = 2
@@ -90,8 +90,9 @@ resource "yandex_compute_instance" "webserver2" {
     }
   }
   network_interface {
-    subnet_id = yandex_vpc_subnet.subnet2.id
-    nat       = true
+    subnet_id  = yandex_vpc_subnet.subnet2.id
+    nat        = false
+    ip_address = "192.168.2.33"
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
@@ -100,13 +101,13 @@ resource "yandex_compute_instance" "webserver2" {
 
 #zabbix
 resource "yandex_compute_instance" "zabbix" {
-  name        = "zabbix"
+  name     = "zabbix"
+  zone     = "ru-central1-a"
+  hostname = "zabbix"
   platform_id = "standard-v3"
   scheduling_policy {
     preemptible = true
   }
-  zone     = "ru-central1-a"
-  hostname = "zabbix"
   resources {
     cores         = 2
     memory        = 2
@@ -119,8 +120,9 @@ resource "yandex_compute_instance" "zabbix" {
     }
   }
   network_interface {
-    subnet_id = yandex_vpc_subnet.subnet1.id
-    nat       = true
+    subnet_id  = yandex_vpc_subnet.subnet1.id
+    nat        = true
+    ip_address = "192.168.1.8"
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
@@ -130,13 +132,13 @@ resource "yandex_compute_instance" "zabbix" {
 
 #elastic
 resource "yandex_compute_instance" "elast" {
-  name        = "elast"
+  name     = "elast"
+  zone     = "ru-central1-a"
+  hostname = "elast"
   platform_id = "standard-v3"
   scheduling_policy {
     preemptible = true
   }
-  zone     = "ru-central1-a"
-  hostname = "elast"
   resources {
     cores         = 2
     memory        = 4
@@ -149,8 +151,9 @@ resource "yandex_compute_instance" "elast" {
     }
   }
   network_interface {
-    subnet_id = yandex_vpc_subnet.subnet1.id
-    nat       = true
+    subnet_id  = yandex_vpc_subnet.subnet1.id
+    nat        = false
+    ip_address = "192.168.1.21"
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
@@ -159,13 +162,13 @@ resource "yandex_compute_instance" "elast" {
 
 #kibana
 resource "yandex_compute_instance" "kibana" {
-  name        = "kibana"
+  name     = "kibana"
+  zone     = "ru-central1-a"
+  hostname = "kibana"
   platform_id = "standard-v3"
   scheduling_policy {
     preemptible = true
   }
-  zone     = "ru-central1-a"
-  hostname = "kibana"
   resources {
     cores         = 2
     memory        = 4
@@ -178,52 +181,15 @@ resource "yandex_compute_instance" "kibana" {
     }
   }
   network_interface {
-    subnet_id = yandex_vpc_subnet.subnet1.id
-    nat       = true
+    subnet_id  = yandex_vpc_subnet.subnet1.id
+    nat        = true
+    ip_address = "192.168.1.35"
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
   }
 }
 
-#gateway
-
-resource "yandex_compute_instance" "gateway" {
-
-  name        = "gateway"
-  zone        = "ru-central1-b"
-  platform_id = "standard-v3"
-  hostname    = "gateway"
-  scheduling_policy {
-    preemptible = true
-  }
-  resources {
-    cores         = 2
-    memory        = 2
-    core_fraction = 20
-  }
-
-  boot_disk {
-    initialize_params {
-      image_id = "fd8pnse1rshdvced0u8h"
-      size     = 10
-    }
-  }
-
-  network_interface {
-    subnet_id = yandex_vpc_subnet.subnet-gw.id
-    dns_record {
-      fqdn = "ssgw.srv."
-      ttl  = 300
-    }
-    nat                = true
-    security_group_ids = [yandex_vpc_security_group.sg-gw.id]
-  }
-
-  metadata = {
-    user-data = "${file("./meta.txt")}"
-  }
-}
 
 #alb-address
 
@@ -241,13 +207,13 @@ resource "yandex_alb_target_group" "tg1" {
   name = "tg1"
 
   target {
-    subnet_id  = yandex_compute_instance.webserver1.network_interface.0.subnet_id
-    ip_address = yandex_compute_instance.webserver1.network_interface.0.ip_address
+    subnet_id  = yandex_compute_instance.web-server-nginx-1.network_interface.0.subnet_id
+    ip_address = yandex_compute_instance.web-server-nginx-1.network_interface.0.ip_address
   }
 
   target {
-    subnet_id  = yandex_compute_instance.webserver2.network_interface.0.subnet_id
-    ip_address = yandex_compute_instance.webserver2.network_interface.0.ip_address
+    subnet_id  = yandex_compute_instance.web-server-nginx-2.network_interface.0.subnet_id
+    ip_address = yandex_compute_instance.web-server-nginx-2.network_interface.0.ip_address
   }
 }
 
@@ -305,7 +271,7 @@ resource "yandex_alb_virtual_host" "vh1" {
 resource "yandex_alb_load_balancer" "alb1" {
   name               = "alb1"
   network_id         = yandex_vpc_network.network1.id
-  security_group_ids = [yandex_vpc_security_group.sg-balancer.id]
+  security_group_ids = [yandex_vpc_security_group.dk1-balancer.id]
 
   allocation_policy {
     location {
@@ -337,10 +303,10 @@ resource "yandex_alb_load_balancer" "alb1" {
   }
 }
 
-#sg-balancer
+#dk1-balancer
 
-resource "yandex_vpc_security_group" "sg-balancer" {
-  name       = "sg-balancer"
+resource "yandex_vpc_security_group" "dk1-balancer" {
+  name       = "dk1-balancer"
   network_id = yandex_vpc_network.network1.id
 
   egress {
@@ -366,8 +332,8 @@ resource "yandex_vpc_security_group" "sg-balancer" {
 
 #sg-private
 
-resource "yandex_vpc_security_group" "sg-private" {
-  name       = "sg-private"
+resource "yandex_vpc_security_group" "dk1-private" {
+  name       = "dk1-private"
   network_id = yandex_vpc_network.network1.id
 
   egress {
@@ -393,7 +359,7 @@ resource "yandex_vpc_security_group" "sg-private" {
   ingress {
     protocol          = "ANY"
     description       = "any"
-    security_group_id = yandex_vpc_security_group.sg-gw.id
+    security_group_id = yandex_vpc_security_group.dk1-gw.id
   }
 
   ingress {
@@ -427,10 +393,10 @@ resource "yandex_vpc_security_group" "sg-private" {
 
 }
 
-#sg-public
+#dk1-public
 
-resource "yandex_vpc_security_group" "sg-public" {
-  name       = "sg-public"
+resource "yandex_vpc_security_group" "dk1-public" {
+  name       = "dk1-public"
   network_id = yandex_vpc_network.network1.id
 
 
@@ -472,15 +438,15 @@ resource "yandex_vpc_security_group" "sg-public" {
   ingress {
     protocol          = "ANY"
     description       = "any"
-    security_group_id = yandex_vpc_security_group.sg-gw.id
+    security_group_id = yandex_vpc_security_group.dk1-gw.id
   }
 
 }
 
-#sg-gateway
+#dk1-gateway
 
-resource "yandex_vpc_security_group" "sg-gw" {
-  name       = "sg-gw"
+resource "yandex_vpc_security_group" "dk1-gw" {
+  name       = "dk1-gw"
   network_id = yandex_vpc_network.network1.id
 
 
@@ -499,8 +465,8 @@ resource "yandex_vpc_security_group" "sg-gw" {
   }
 }
 
-resource "yandex_compute_snapshot_schedule" "default-1" {
-  name = "default-1"
+resource "yandex_compute_snapshot_schedule" "default" {
+  name = "default"
 
   schedule_policy {
     expression = "0 5 ? * *"
@@ -512,11 +478,9 @@ resource "yandex_compute_snapshot_schedule" "default-1" {
     description = "daily"
   }
 
-  disk_ids = [yandex_compute_instance.webserver1.boot_disk[0].disk_id,
-    yandex_compute_instance.webserver2.boot_disk[0].disk_id,
+  disk_ids = [yandex_compute_instance.web-server-nginx-1.boot_disk[0].disk_id,
+    yandex_compute_instance.web-server-nginx-2.boot_disk[0].disk_id,
     yandex_compute_instance.zabbix.boot_disk[0].disk_id,
     yandex_compute_instance.elast.boot_disk[0].disk_id,
-    yandex_compute_instance.kibana.boot_disk[0].disk_id,
-  yandex_compute_instance.gateway.boot_disk[0].disk_id]
+    yandex_compute_instance.kibana.boot_disk[0].disk_id,]
 }
-
