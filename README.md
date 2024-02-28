@@ -130,8 +130,9 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 Скриншоты:
 <details>
    
-![image](https://github.com/Dk054/sys-diplom/assets/139000762/9b4fa89f-b7a5-4438-94c9-5a522040489a)
-![image](https://github.com/Dk054/sys-diplom/assets/139000762/c6dbdcb5-f252-4b93-a545-3277f7e7d19b)
+![image](https://github.com/Dk054/sys-diplom/assets/139000762/b372c5b3-32b0-4628-97ed-47d7ddb0cc63)
+![image](https://github.com/Dk054/sys-diplom/assets/139000762/74aef37d-79f8-4a45-950e-7232fe0e142c)
+
 
 </details> 
 
