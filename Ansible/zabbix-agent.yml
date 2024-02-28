@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: web_servers,elastic,kibana
   remote_user: diplom
   become: yes
   become_method: sudo
