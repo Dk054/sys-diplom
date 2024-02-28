@@ -1,4 +1,4 @@
-- hosts: zabbix_servers
+- hosts: zabbix_server
   remote_user: diplom
   become: yes
   become_method: sudo
