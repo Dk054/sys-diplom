@@ -12,3 +12,6 @@ repo_update: true
 repo_upgrade: true
 apt:
   preserve_sources_list: true
+
+
+https://cloud.yandex.ru/ru/docs/tutorials/infrastructure-management/terraform-quickstart#bash_1
